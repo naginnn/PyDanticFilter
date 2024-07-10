@@ -77,10 +77,10 @@ class AbstractBase(ABC):
         :param value:
         :param annotation:
         :param query: select query.
-        """
+        """  # noqa: D401
 
 
-class BaseQuery(AbstractBase, ABC):
+class BaseQuery:
     """Base class for all queries types."""
 
     options: ClassVar = ['operator', 'alchemy_type', 'path', 'inner_op', 'outer_op', 'query_alias']
@@ -128,7 +128,7 @@ class BaseQuery(AbstractBase, ABC):
                     attr = getattr(values.get('model'), parent) if attr is None else attr[parent]
         return attr
 
-    def make(self, query: Select, value: Any, annotation: Any) -> Any:
+    def make(self, query: Select, value: Any, annotation: Any) -> Any:  # noqa: D102, ANN401
         # if isinstance(value, list):
         #     conditions.append(Detail.sellers.ilike('%{}%'.format(name)))
         # generic = get_args(annotation)
@@ -141,7 +141,7 @@ class BaseQuery(AbstractBase, ABC):
         exp = []
         if len(path) > 1:
             # json_field = self.__get_json_field(m, path, generic[0] if generic else annotation)
-            json_field = self.__get_json_field(m, path, int)
+            json_field = self.__get_json_field(m, path)
             if isinstance(value, list):
                 for i, v in enumerate(value):
                     if i >= 1:

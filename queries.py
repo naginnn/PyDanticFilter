@@ -1,4 +1,4 @@
-
+from query.base import BaseQuery
 
 
 class SlugQuery(BaseQuery):
