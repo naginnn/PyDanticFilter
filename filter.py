@@ -5,7 +5,7 @@ from sqlalchemy import or_
 from sqlalchemy.dialects import postgresql
 
 from models.events import EventConsumer
-from queries import BaseQuery
+from query.base import BaseQuery
 from settings.db import get_sync_session
 
 
